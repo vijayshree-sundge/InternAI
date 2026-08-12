@@ -1,7 +1,7 @@
 services:
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest
+  postgres:
+    image: postgres:16
     environment:
-      ACCEPT_EULA: "Y"
-      SA_PASSWORD: "ProjectInternAI@N18"
-    ports: ["1433:1433"]
+      POSTGRES_PASSWORD: "postgre@2026"
+      POSTGRES_DB: internai
+    ports: ["5432:5432"]
