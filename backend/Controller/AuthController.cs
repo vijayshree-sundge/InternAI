@@ -1,8 +1,9 @@
 // backend/Controllers/AuthController.cs
 using Microsoft.AspNetCore.Mvc;
-using InternAI.Api.Data;      // wherever AppDbContext lives
-using InternAI.Api.Models;    // wherever your model/DTO classes live
 using Microsoft.EntityFrameworkCore;
+using BCrypt.Net;
+using InternAI.Api.Data;
+using InternAI.Api.Models;
 [ApiController][Route("api/[controller]")]
 public class AuthController : ControllerBase {
     private readonly AppDbContext _db; private readonly IConfiguration _config;

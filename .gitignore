@@ -1,8 +1,22 @@
-node_modules/
-build/
-dist/
-coverage/
+# .NET
+backend/bin/
+backend/obj/
+*.user
+
+#Node
+frontend/node_modules/
+frontend/.next/
+
+#Python
+ai-service/__pycache__/
+ai-service/.venv/
+*.pyc
+
+# Env
+.env
+.env.local
+*.env
+
+# OS
 .DS_Store
-*.log
-.env*
-!.env.example
+Thumbs.db
