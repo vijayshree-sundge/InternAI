@@ -1,4 +1,9 @@
 // backend/Services/JwtHelper.cs
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using InternAI.Api.Models; // wherever your User class lives
 public static class JwtHelper {
     public static string GenerateToken(User user, IConfiguration config) {
         var claims = new[] {
