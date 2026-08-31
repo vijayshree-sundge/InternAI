@@ -1,9 +1,13 @@
 "use client";
 import KanbanBoard from "@/components/KanbanBoard";
+import { getCurrentUserId } from "@/lib/auth";
 
 export default function InternDashboard() {
-  // TODO Day 8: pull real userId from JWT/localStorage instead of hardcoding
-  const userId = 1;
+  const userId = getCurrentUserId();
+
+  if (!userId) {
+    return <div className="p-8 text-slate-600">Unable to load user. Please log in again.</div>;
+  }
 
   return (
     <div className="p-8">

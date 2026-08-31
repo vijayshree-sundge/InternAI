@@ -1,18 +1,20 @@
 "use client";
 import { useEffect, useState } from "react";
 import api from "@/lib/api";
+import { getCurrentUserId } from "@/lib/auth";
 
 export default function ProfilePage() {
-  // TODO: replace hardcoded userId with real value from JWT/localStorage once decoded there
-  const userId = 1;
+  const userId = getCurrentUserId();
   const [profile, setProfile] = useState({ name: "", email: "" });
   const [message, setMessage] = useState("");
 
   useEffect(() => {
+    if (!userId) return;
     api.get(`/profile/${userId}`).then(res => setProfile(res.data));
-  }, []);
+  }, [userId]);
 
   const handleSave = async () => {
+    if (!userId) return;
     try {
       await api.put(`/profile/${userId}`, profile);
       setMessage("Profile updated.");
@@ -20,6 +22,10 @@ export default function ProfilePage() {
       setMessage("Failed to update profile.");
     }
   };
+
+  if (!userId) {
+    return <div className="p-8 text-slate-600">Unable to load user. Please log in again.</div>;
+  }
 
   return (
     <div className="p-8 max-w-md space-y-4">
