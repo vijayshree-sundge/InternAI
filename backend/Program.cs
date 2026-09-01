@@ -28,6 +28,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 builder.Services.AddAuthorization();
 
+builder.Services.AddHttpClient<InternAI.Api.Services.AiServiceClient>(client => {
+    client.BaseAddress = new Uri(builder.Configuration["AiService:BaseUrl"] ?? "http://localhost:8000");
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
