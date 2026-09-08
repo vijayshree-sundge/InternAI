@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using InternAI.Api.Data;
 using InternAI.Api.Models;
 
@@ -11,6 +12,10 @@ namespace InternAI.Api.Controller;
 public class UsersController : ControllerBase {
     private readonly AppDbContext _db;
     public UsersController(AppDbContext db) { _db = db; }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll() =>
+        Ok(await _db.Users.Select(u => new { u.Id, u.Name, u.Email, u.Role, u.BatchId }).ToListAsync());
 
     [HttpPost("intern")]
     public async Task<IActionResult> CreateIntern(CreateInternDto dto) {
