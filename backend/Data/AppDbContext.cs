@@ -12,4 +12,6 @@ public class AppDbContext : DbContext {
     public DbSet<Submission> Submissions => Set<Submission>();
     public DbSet<SubmissionMessage> Messages => Set<SubmissionMessage>();
     public DbSet<Evaluation> Evaluations => Set<Evaluation>();
+    public DbSet<Attendance> Attendances => Set<Attendance>();
 }
+

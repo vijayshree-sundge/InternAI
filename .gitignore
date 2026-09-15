@@ -1,13 +1,15 @@
 # .NET
 backend/bin/
 backend/obj/
+backend-tests/bin/
+backend-tests/obj/
 *.user
 
-#Node
+# Node
 frontend/node_modules/
 frontend/.next/
 
-#Python
+# Python
 ai-service/__pycache__/
 ai-service/.venv/
 *.pyc
